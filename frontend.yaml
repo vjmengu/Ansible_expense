@@ -23,9 +23,9 @@
       state: directory
 
   - name: download frontend app
-    ansible.builtin.url_get:
+    ansible.builtin.get_url:
       url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-      path: /tmp/frontend.zip
+      dest: /tmp/frontend.zip
 
   - name: unzip frontend app
     ansible.builtin.unarchive:
