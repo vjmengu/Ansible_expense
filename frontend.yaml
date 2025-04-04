@@ -20,4 +20,4 @@
   - name: create a directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
-      state: present
+      state: directory
