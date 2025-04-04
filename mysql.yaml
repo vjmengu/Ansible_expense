@@ -19,4 +19,4 @@
       login_user: root
       login_password: "{{ mysql_pass }}"
       login_host: mysql.vijayjohn.online
-      register: mysql_info
+    register: mysql_info
