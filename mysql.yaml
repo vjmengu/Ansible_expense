@@ -18,5 +18,5 @@
     community.mysql.mysql_info:
       login_user: root
       login_password: "{{ mysql_pass }}"
-      login_host: 172.31.14.158
+      login_host: mysql.vijayjohn.online
       register: mysql_info
