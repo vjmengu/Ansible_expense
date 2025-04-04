@@ -1,6 +1,8 @@
 - name: configure mysql-server
   hosts: mysqlserver
   become: yes
+  vars:
+    mysql_pass: ExpenseApp@1
   tasks:
   - name: install mysql server
     ansible.builtin.package:
@@ -15,6 +17,6 @@
   - name: connect to mysql server
     community.mysql.mysql_info:
       login_user: root
-      login_password: ExpenseApp@1
+      login_password: "{{ mysql_pass }}"
       login_host: 172.31.14.158
       register: mysql_info
