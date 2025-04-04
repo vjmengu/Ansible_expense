@@ -21,3 +21,24 @@
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
+
+  - name: download frontend app
+    ansible.builtin.url_get:
+      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+      path: /tmp/frontend.zip
+
+  - name: unzip frontend app
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+
+  - name: copy expense configuration(connection b/w frontend and backend)
+    ansible.builtin.copy:
+      src: expense.conf
+      dest: /etc/nginx/default.d/expense.conf
+
+  - name: restart nginx
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
